@@ -13,26 +13,13 @@ SRC_URI="http://packages.linuxdeepin.com/deepin/pool/non-free/d/deepinwine-qq/${
 LICENSE="Tencent"
 SLOT="0"
 KEYWORDS="~amd64 ~x86"
-IUSE="system-wine"
+IUSE=""
 
 RDEPEND="
-	amd64? (
-		|| (
-			 x11-libs/gtk+:2[abi_x86_32]
-			 app-emulation/emul-linux-x86-gtklibs 
-		)
-	)
-
-	x86? (  x11-libs/gtk+:2  )
-
-	system-wine? (
-		>=app-emulation/wine-1.7.16[abi_x86_32,-abi_x86_x32,-abi_x86_64,fontconfig,mp3,truetype,X,nls,xml]
-	)
+	>=app-emulation/crossover-bin-14.0
 "
 
 RESTRICT="mirror strip"
-
-#QA_PRESTRIPPED="usr/share/deepinwine/qqintl/wine-qqintl"
 
 S=$WORKDIR
 
@@ -41,12 +28,6 @@ src_install() {
 
 	chmod 755 ${D}/usr
 	chown -R root:root ${D}
-
-	if use system-wine ; then
-		rm ${D}/usr/share/deepinwine/qqintl/wine/bin -rf
-		ln -svf /usr/bin  ${D}/usr/share/deepinwine/qqintl/wine/bin
-		rm -rf ${D}/usr/share/deepinwine/qqintl/wine/lib
-	fi
 }
 
 pkg_postinst() {
