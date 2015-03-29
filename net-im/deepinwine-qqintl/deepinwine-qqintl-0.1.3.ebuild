@@ -19,7 +19,6 @@ RDEPEND="
 	amd64? (
 		|| (
 			 x11-libs/gtk+:2[abi_x86_32]
-			 app-emulation/emul-linux-x86-gtklibs 
 		)
 	)
 
