@@ -1,4 +1,4 @@
-# woodelf-overlay
+# mattd-overlay
 
 This is my personal overlay, and I will only place the stuff I need into it.
 
