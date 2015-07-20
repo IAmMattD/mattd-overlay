@@ -1,4 +1,4 @@
-# Copyright 1999-2013 Gentoo Foundation
+# Copyright 1999-2015 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -31,13 +31,10 @@ RDEPEND="
 
 RESTRICT="mirror strip"
 
-QA_PRESTRIPPED="usr/share/deepinwine/qqintl/wine-qqintl"
-
 S=$WORKDIR
 
 src_install() {
-	tar xzvf data.tar.gz -C ${D}/	
-
+	tar xzvf data.tar.gz -C ${D}/
 	chmod 755 ${D}/usr
 	chown -R root:root ${D}
 

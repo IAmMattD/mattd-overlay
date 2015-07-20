@@ -6,9 +6,9 @@ EAPI=5
 
 inherit eutils
 
-DESCRIPTION="Tencent QQ for Linux by Deepin"
+DESCRIPTION="QQ Download Tool for Linux by Deepin"
 HOMEPAGE="http://www.linuxdeepin.com/"
-SRC_URI="http://packages.linuxdeepin.com/deepin/pool/non-free/d/deepinwine-qq/${PN}_${PV}deepin3_i386.deb"
+SRC_URI="http://packages.linuxdeepin.com/deepin/pool/non-free/d/deepinwine-qqdownload/${PN}_${PV}_all.deb"
 
 LICENSE="Tencent"
 SLOT="0"
@@ -24,7 +24,7 @@ RESTRICT="mirror strip"
 S=$WORKDIR
 
 src_install() {
-	tar xvf data.tar.xz -C ${D}/	
+	tar xvf data.tar.xz -C ${D}/
 
 	chmod 755 ${D}/usr
 	chown -R root:root ${D}
