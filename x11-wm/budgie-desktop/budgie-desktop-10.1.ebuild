@@ -3,7 +3,7 @@
 # $Header: $
 EAPI=5
 
-VALA_MIN_API_VERSION="0.22"
+VALA_MIN_API_VERSION="0.28"
 GNOME2_LA_PUNT="yes"
 
 inherit gnome2 vala
@@ -26,15 +26,18 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-    >=media-sound/pulseaudio-4.0[glib]
-    >=x11-libs/gtk+-3.14.0:3
-    >=sys-power/upower-0.9.20[introspection]
-    >=gnome-base/gnome-menus-3.10.1
-    >=x11-libs/libwnck-3.4.7
-    >=x11-wm/mutter-3.14.0
-    >=dev-libs/glib-2.40.0
-    dev-libs/libgee:0.8
-    >=dev-libs/libpeas-1.0"
+	>=dev-lang/vala-0.28
+	>=dev-libs/glib-2.44.0
+	>=dev-libs/gobject-introspection-common-1.44.0
+	>=dev-libs/libpeas-1.8.0
+	>=gnome-base/gnome-desktop-3.18.0
+	>=gnome-base/gnome-menus-3.10.1
+	>=media-sound/pulseaudio-4.0[glib]
+	>=sys-power/upower-0.9.20[introspection]
+	>=x11-libs/gtk+-3.16.0:3
+	>=x11-libs/libwnck-3.14.0
+	>=x11-wm/mutter-3.18.0
+	"
 
 if [[ ${PV} == "9999" ]] ; then
     RDEPEND="${RDEPEND}
@@ -69,4 +72,3 @@ src_compile() {
     local valaver="$(vala_best_api_version)"
     emake VALAC="$(type -p valac-${valaver})"
 }
-

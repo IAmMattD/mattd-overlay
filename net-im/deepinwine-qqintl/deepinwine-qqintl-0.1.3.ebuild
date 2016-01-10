@@ -7,8 +7,8 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="Tencent QQ for Linux by Deepin"
-HOMEPAGE="http://www.linuxdeepin.com/"
-SRC_URI="http://packages.linuxdeepin.com/deepin/pool/non-free/d/deepinwine-qqintl/wine-qqintl_${PV}-2_i386.deb"
+HOMEPAGE="http://www.linuxdeepin.org"
+SRC_URI="http://packages.deepin.com/deepin/pool/non-free/d/${PN}/wine-qqintl_${PV}-2_i386.deb"
 
 LICENSE="Tencent"
 SLOT="0"

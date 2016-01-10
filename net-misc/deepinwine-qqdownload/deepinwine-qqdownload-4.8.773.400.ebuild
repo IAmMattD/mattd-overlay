@@ -7,8 +7,8 @@ EAPI=5
 inherit eutils
 
 DESCRIPTION="QQ Download Tool for Linux by Deepin"
-HOMEPAGE="http://www.linuxdeepin.com/"
-SRC_URI="http://packages.linuxdeepin.com/deepin/pool/non-free/d/deepinwine-qqdownload/${PN}_${PV}_all.deb"
+HOMEPAGE="http://www.linuxdeepin.org"
+SRC_URI="http://packages.deepin.com/deepin/pool/non-free/d/${PN}/${PN}_${PV}deepin3_i386.deb"
 
 LICENSE="Tencent"
 SLOT="0"
@@ -32,6 +32,8 @@ src_install() {
 
 pkg_postinst() {
 	elog
-	elog "Please report bugs to Deepin."
+	elog "This package is used with Crossover only, please ensure "
+	elog "you have a licensed Crossover installed."
+	elog "If you encounter any issue, please report it to Deepin."
 	elog
 }
