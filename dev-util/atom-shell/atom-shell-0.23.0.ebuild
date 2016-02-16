@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -27,31 +27,31 @@ IUSE="debug"
 
 DEPEND="
 	${PYTHON_DEPS}
-	sys-devel/llvm:0/3.5[clang]
-	dev-lang/python:2.7
 	|| ( net-libs/nodejs[npm] net-libs/iojs[npm] )
-	x11-libs/gtk+:2
-	x11-libs/libnotify
-	gnome-base/libgnome-keyring
-	dev-libs/nss
+	dev-lang/python:2.7
 	dev-libs/nspr
+        dev-libs/nss
+	dev-util/ninja
 	gnome-base/gconf
+	gnome-base/libgnome-keyring
 	media-libs/alsa-lib
 	net-print/cups
-	sys-libs/libcap
+	>=sys-devel/llvm-3.5.0[clang]
+	sys-libs/libpcap
+	x11-libs/gtk+:2
 	x11-libs/libXtst
+	x11-libs/libnotify
 	x11-libs/pango
-	dev-util/ninja
 "
-
-RDEPEND="${DEPEND}
+RDEPEND="
+	${DEPEND}
 	!<app-editors/atom-0.190.0
-"
+	"
 
 QA_PRESTRIPPED="
-	/usr/share/atom/libffmpegsumo.so
-	/usr/share/atom/libchromiumcontent.so
-"
+		/usr/share/atom/libffmpegsumo.so
+		/usr/share/atom/libchromiumcontent.so
+		"
 
 src_unpack() {
 	git-r3_src_unpack

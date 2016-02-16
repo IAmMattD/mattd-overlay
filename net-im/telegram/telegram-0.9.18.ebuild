@@ -1,13 +1,14 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
 EAPI="5"
+
 inherit eutils versionator
 
 RESTRICT="strip"
 
-DESCRIPTION="Telegram Desktop Messenger (unofficial client), DEV version"
+DESCRIPTION="Telegram Desktop Messenger (unofficial client)"
 HOMEPAGE="https://tdesktop.com/"
 SRC_URI="
 	amd64?	( https://updates.tdesktop.com/tlinux/tsetup.${PV}.tar.xz )

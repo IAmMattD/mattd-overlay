@@ -1,6 +1,6 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $id$
+# $Header: $
 
 EAPI=5
 
@@ -19,15 +19,15 @@ IUSE=""
 DEPEND="
 	${PYTHON_DEPS}
 	|| ( net-libs/nodejs[npm] net-libs/iojs[npm] )
-	media-fonts/inconsolata
+	dev-libs/nss
 	gnome-base/gconf
-	x11-libs/gtk+:2
 	gnome-base/libgnome-keyring
+	media-fonts/inconsolata
+	media-libs/alsa-lib
+	x11-libs/gtk+:2
 	x11-libs/libnotify
 	x11-libs/libXtst
-	dev-libs/nss
-	media-libs/alsa-lib
-"
+	"
 RDEPEND="${DEPEND}"
 
 pkg_setup() {

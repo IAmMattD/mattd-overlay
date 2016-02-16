@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -17,14 +17,16 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-DEPEND=">=dev-lang/vala-0.18
+DEPEND="
 	app-admin/conky
-	>=x11-libs/gtk+-3.0
-	dev-libs/libgee:0
-	net-misc/rsync
+	app-arch/p7zip
+	>=dev-lang/vala-0.18
 	dev-libs/json-glib
+	dev-libs/libgee:0
 	media-gfx/imagemagick
-	app-arch/p7zip"
+	net-misc/rsync
+	>=x11-libs/gtk+-3.0
+	"
 RDEPEND="${DEPEND}"
 
 S=${WORKDIR}/${PN}-${PV}

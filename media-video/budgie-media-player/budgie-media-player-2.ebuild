@@ -1,6 +1,7 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
+
 EAPI=5
 
 inherit gnome2 autotools
@@ -23,11 +24,12 @@ SLOT="0"
 IUSE=""
 
 RDEPEND="
-    >=dev-libs/glib-2.40.0:2
-    >=x11-libs/gtk+-3.12.0:3
-    >=media-libs/gstreamer-1.0.10:1.0
-    >=media-libs/gst-plugins-base-1.0.1:1.0
-    media-libs/id3lib"
+	>=dev-libs/glib-2.40.0:2
+	>=media-libs/gstreamer-1.0.10:1.0
+	>=media-libs/gst-plugins-base-1.0.1:1.0
+	media-libs/id3lib
+	>=x11-libs/gtk+-3.12.0:3
+	"
 
 if [[ ${PV} == "9999" ]] ; then
     RDEPEND="${RDEPEND}

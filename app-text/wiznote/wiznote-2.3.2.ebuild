@@ -27,7 +27,9 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE=""
 
-RDEPEND="dev-qt/qtcore:5
+RDEPEND="
+	dev-qt/qtcore:5
 	dev-qt/qtgui:5
-	dev-qt/qtwebkit:5"
+	dev-qt/qtwebkit:5
+	"
 DEPEND="${RDEPEND}"

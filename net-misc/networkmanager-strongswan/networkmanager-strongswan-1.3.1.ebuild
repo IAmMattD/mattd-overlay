@@ -1,4 +1,4 @@
-# Copyright 1999-2015 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
@@ -19,10 +19,10 @@ KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 RDEPEND="
+	gnome-base/libgnomeui
 	>=net-misc/networkmanager-0.7
 	>=net-misc/strongswan-4.3.3[networkmanager]
-	gnome-base/libgnomeui"
-
+	"
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig"
