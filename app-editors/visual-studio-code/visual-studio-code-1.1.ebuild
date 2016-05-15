@@ -9,8 +9,8 @@ inherit eutils
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
 SRC_URI="
-	x86? ( https://az764295.vo.msecnd.net/stable/fa6d0f03813dfb9df4589c30121e9fcffa8a8ec8/VSCode-linux-ia32-stable.zip -> ${P}-x86.zip )
-	amd64? ( https://az764295.vo.msecnd.net/stable/fa6d0f03813dfb9df4589c30121e9fcffa8a8ec8/VSCode-linux-x64-stable.zip -> ${P}-amd64.zip )
+	x86? ( https://az764295.vo.msecnd.net/stable/c212f0908f3d29933317bbc3233568fbca7944b1/VSCode-linux-ia32-stable.zip -> ${P}-x86.zip )
+	amd64? ( https://az764295.vo.msecnd.net/stable/c212f0908f3d29933317bbc3233568fbca7944b1/VSCode-linux-x64-stable.zip -> ${P}-amd64.zip )
 	"
 RESTRICT="mirror"
 
@@ -46,9 +46,8 @@ src_install(){
 	insinto "/usr/share/pixmaps"
 	doins ${FILESDIR}/${PN}.png
 	fperms +x "/opt/${PN}/code"
-	fperms +x "/opt/${PN}/libgcrypt.so.11"
+	fperms +x "/opt/${PN}/libffmpeg.so"
 	fperms +x "/opt/${PN}/libnode.so"
-	fperms +x "/opt/${PN}/libnotify.so.4"
 	insinto "/usr/share/licenses/${PN}"
 	newins "resources/app/LICENSE.txt" "LICENSE"
 }

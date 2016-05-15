@@ -11,7 +11,7 @@ LANGUAGES="linguas_ar linguas_be linguas_bn_BD linguas_cs linguas_da linguas_de
 	linguas_pt_BR linguas_ru linguas_tr linguas_uk linguas_vi linguas_zh_CN
 	linguas_zh_TW"
 
-IUSE="aria2 gnutls gstreamer libnotify nls openssl ${LANGUAGES}"
+IUSE="gnutls gstreamer libnotify nls openssl rss-notify ${LANGUAGES}"
 
 if [[ ${PV} == *9999* ]]; then
 	inherit git-2
@@ -29,16 +29,17 @@ HOMEPAGE="http://www.ugetdm.com"
 LICENSE="LGPL-2.1"
 SLOT="0"
 
-RDEPEND="
-	dev-libs/libpcre
+RDEPEND="dev-libs/libpcre
 	>=dev-libs/glib-2.32:2
 	>=x11-libs/gtk+-3.4:3
 	gnutls? ( net-libs/gnutls dev-libs/libgcrypt )
 	gstreamer? ( media-libs/gstreamer:0.10 )
-	libnotify? ( x11-libs/libnotify )
-	"
+	libnotify? ( x11-libs/libnotify )"
+
 DEPEND="${RDEPEND}
 	dev-util/intltool
+	net-misc/aria2
+	net-misc/curl
 	virtual/pkgconfig
 	sys-devel/gettext"
 
@@ -59,7 +60,8 @@ src_configure() {
 		  $(use_with openssl) \
 		  $(use_with gnutls) \
 		  $(use_enable gstreamer) \
-		  $(use_enable libnotify notify)
+		  $(use_enable libnotify notify) \
+		  $(use_enable rss-notify)
 }
 
 src_compile() {
@@ -77,12 +79,10 @@ src_install() {
 }
 
 pkg_postinst() {
-	if use aria2; then
 		echo
-		elog "You've enabled the aria2 USE flag, so the aria2 plug-in has been"
-		elog "built. This allows you to control a local or remote instance of aria2"
-		elog "through xmlrpc. To use aria2 locally you have to emerge"
-		elog "net-misc/aria2 with the xmlrpc USE enabled manually."
+		elog "This uGet version has aria2 plugin built-in. This allows"
+		elog "you to control a local or remote instance of aria2 through"
+		elog "xmlrpc. To use aria2 locally you have to emerge net-misc/aria2"
+		elog "with the xmlrpc USE enabled manually."
 		echo
-	fi
 }
