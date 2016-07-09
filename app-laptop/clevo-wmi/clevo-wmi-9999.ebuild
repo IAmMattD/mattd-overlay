@@ -1,6 +1,6 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -15,11 +15,10 @@ SLOT="0"
 KEYWORDS=""
 IUSE=""
 
-DEPEND="
-	virtual/linux-sources
-	sys-kernel/linux-headers
-	"
-RDEPEND=""
+DEPEND="virtual/linux-sources
+	sys-kernel/linux-headers"
+
+RDEPEND="${DEPEND}"
 
 MODULE_NAMES="clevo_wmi(wmi:${S})"
 

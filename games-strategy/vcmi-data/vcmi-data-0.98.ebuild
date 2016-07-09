@@ -1,6 +1,6 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -9,10 +9,8 @@ inherit games
 DESCRIPTION="Core data for vcmi"
 HOMEPAGE="http://vcmi.eu"
 MY_P="core"
-SRC_URI="
-	http://download.vcmi.eu/core.zip
-	http://download.vcmi.eu/WoG/wog.zip
-"
+SRC_URI="http://download.vcmi.eu/core.zip
+	http://download.vcmi.eu/WoG/wog.zip"
 
 LICENSE="GPL-2"
 SLOT="0"

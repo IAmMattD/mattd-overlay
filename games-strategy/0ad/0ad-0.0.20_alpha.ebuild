@@ -1,6 +1,6 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -22,8 +22,7 @@ KEYWORDS="~amd64 ~x86"
 IUSE="editor +lobby nvtt pch sound test"
 RESTRICT="test"
 
-RDEPEND="
-	dev-libs/boost
+RDEPEND="dev-libs/boost
 	dev-libs/icu:=
 	dev-libs/libxml2
 	dev-libs/nspr
@@ -43,6 +42,7 @@ RDEPEND="
 	nvtt? ( media-gfx/nvidia-texture-tools )
 	sound? ( media-libs/libvorbis
 		media-libs/openal )"
+
 DEPEND="${RDEPEND}
 	${PYTHON_DEPS}
 	virtual/pkgconfig

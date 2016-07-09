@@ -1,6 +1,6 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -15,8 +15,7 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE="system-wine"
 
-RDEPEND="
-	amd64? (
+RDEPEND="amd64? (
 		media-libs/alsa-lib[abi_x86_32]
 		media-libs/lcms[abi_x86_32]
 		media-libs/libpng:1.2[abi_x86_32]
@@ -42,15 +41,14 @@ RDEPEND="
 
 	system-wine? (
 		>=app-emulation/wine-1.7.16[abi_x86_32,-abi_x86_x32,-abi_x86_64,fontconfig,mp3,truetype,X,nls,xml]
-	)
-	"
+	)"
 
 RESTRICT="mirror strip"
 
 S=$WORKDIR
 
 src_install() {
-	tar xzvf data.tar.gz -C ${D}/
+	tar xzvf data.tar.gz -C ${D}
 	chmod 755 ${D}/usr
 	chown -R root:root ${D}
 

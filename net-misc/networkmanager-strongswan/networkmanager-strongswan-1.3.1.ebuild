@@ -1,6 +1,6 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=2
 inherit eutils versionator
@@ -18,11 +18,10 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="
-	gnome-base/libgnomeui
+RDEPEND="gnome-base/libgnomeui
 	>=net-misc/networkmanager-0.7
-	>=net-misc/strongswan-4.3.3[networkmanager]
-	"
+	>=net-misc/strongswan-4.3.3[networkmanager]"
+
 DEPEND="${RDEPEND}
 	dev-util/intltool
 	virtual/pkgconfig"
@@ -41,4 +40,3 @@ src_install() {
 
 	dodoc NEWS || die "dodoc failed"
 }
-

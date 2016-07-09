@@ -1,6 +1,6 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -15,17 +15,14 @@ SLOT="0"
 KEYWORDS="~amd64 ~x86"
 IUSE=""
 
-RDEPEND="
-	>=app-emulation/crossover-bin-14.0
-	"
+RDEPEND=">=app-emulation/crossover-bin-14.0"
 
 RESTRICT="mirror strip"
 
 S=$WORKDIR
 
 src_install() {
-	tar xvf data.tar.xz -C ${D}/
-
+	tar xvf data.tar.xz -C ${D}
 	chmod 755 ${D}/usr
 	chown -R root:root ${D}
 }

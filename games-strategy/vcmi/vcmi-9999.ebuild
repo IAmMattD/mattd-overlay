@@ -1,6 +1,6 @@
 # Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: $
+# $Id$
 
 EAPI=5
 
@@ -21,8 +21,7 @@ SLOT="0"
 
 IUSE="editor erm +launcher"
 
-RDEPEND="
-	media-libs/libsdl2[video]
+RDEPEND="media-libs/libsdl2[video]
 	media-libs/sdl2-image
 	media-libs/sdl2-mixer
 	media-libs/sdl2-ttf
@@ -35,13 +34,12 @@ RDEPEND="
 	launcher? (
 		dev-qt/qtnetwork:5
 		dev-qt/qtwidgets:5
-	)
-"
+	)"
+
 DEPEND="${RDEPEND}
 	>=dev-libs/boost-1.48
 	>=sys-devel/gcc-4.6:*
-	virtual/pkgconfig
-"
+	virtual/pkgconfig"
 
 src_prepare() {
 	cmake-utils_src_prepare
