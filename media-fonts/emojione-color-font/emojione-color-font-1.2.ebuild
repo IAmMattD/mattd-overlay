@@ -23,9 +23,7 @@ FONT_SUFFIX="ttf"
 DOCS="README.md"
 FONT_CONF=( fontconfig/56-${PN}.conf )
 
-src_prepare(){
-	mv fontconfig/user-bitstream-vera-fonts.conf fontconfig/56-${PN}.conf || die "Cannot be renamed"
-}
+S=$WORKDIR/EmojiOneColor-SVGinOT-Linux-${PV}
 
 src_install(){
 	insinto ${EPREFIX}/usr/share/licenses/${PN}
