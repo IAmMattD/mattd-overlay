@@ -1,4 +1,4 @@
-# Copyright 1999-2012 Gentoo Foundation
+# Copyright 1999-2016 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
 # $Id$
 
@@ -17,6 +17,7 @@ IUSE=""
 
 RDEPEND=">=x11-libs/vte-0.40.2:2.91
 	>=dev-libs/glib-2.8.4:2
+	dev-libs/confuse
 	>=x11-libs/gtk+-3.0"
 
 DEPEND="${RDEPEND}
