@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=FVWM
+Name[zh_CN]=FVWM
+Comment=This session logs you into FVWM
+Comment[zh_CN]=此会话将您登录到 FVWM
+Exec=fvwm
+TryExec=fvwm
+Icon=
+Type=Application
+DesktopNames=fvwm
