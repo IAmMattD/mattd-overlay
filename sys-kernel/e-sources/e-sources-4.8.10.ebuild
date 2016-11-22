@@ -8,13 +8,13 @@ K_KDBUS_AVAILABLE="1"
 
 
 ck_version="1"
-gentoo_version="1"
+gentoo_version="11"
 #tuxonice_version="2015.10.30"
 #uksm_version=""
 
-aufs_kernel_version="4.7_p20160905"
+aufs_kernel_version="4.8_p20161010"
 cjktty_kernel_version="4.4"
-reiser4_kernel_version="4.7.0"
+reiser4_kernel_version="4.8.0"
 #tuxonice_kernel_version="4.2.5"
 #uksm_kernel_version=""
 
