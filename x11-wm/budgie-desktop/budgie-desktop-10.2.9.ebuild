@@ -13,12 +13,12 @@ DESCRIPTION="Solus-Project's desktop"
 HOMEPAGE="https://solus-project.com/budgie/"
 
 if [[ ${PV} == "9999" ]] ; then
-    EGIT_REPO_URI="https://github.com/solus-project/${PN}.git"
+    EGIT_REPO_URI="https://github.com/${PN}/${PN}.git"
     SRC_URI=""
     KEYWORDS=""
     inherit git-r3 autotools
 else
-    SRC_URI="https://github.com/solus-project/${PN}/releases/download/v${PV}/${PN}-${PV}.tar.xz"
+    SRC_URI="https://github.com/${PN}/${PN}/releases/download/v${PV}/${P}.tar.xz"
     KEYWORDS="~amd64 ~x86"
 fi
 

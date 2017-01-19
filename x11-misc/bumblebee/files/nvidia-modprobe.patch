@@ -1,0 +1,12 @@
+--- a/src/module.c	2016-12-24 00:30:21.204158448 +0800
++++ b/src/module.c	2016-12-24 00:31:31.295581372 +0800
+@@ -96,7 +96,8 @@
+     int retries = 30;
+     bb_log(LOG_INFO, "Unloading %s driver\n", driver);
+     char *mod_argv[] = {
+-      "rmmod",
++      "modprobe",
++	  "-r",
+       driver,
+       NULL
+     };
