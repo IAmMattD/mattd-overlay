@@ -108,9 +108,9 @@ USE_ENABLE() {
 
 		ck)		ck_url="http://ck.kolivas.org/patches"
 				if [[ "${KMMV}" < "4" || "${KMINOR}" < "2" ]]; then
-					ck_patch="${KMV}-ck${ck_version}-broken-out.tar.bz2"
+					ck_patch="${KMV}-ck${ck_version}-broken-out.xz"
 				else
-					ck_patch="${KMV}-ck${ck_version}-broken-out.tar.xz"
+					ck_patch="${KMV}-ck${ck_version}-broken-out.tar.bz2"
 				fi
 				ck_src="${ck_url}/${KMSV}/${KMV}/${KMV}-ck${ck_version}/${ck_patch}"
 				HOMEPAGE="${HOMEPAGE} ${ck_url}"

@@ -7,13 +7,13 @@ K_DEBLOB_AVAILABLE="0"
 K_KDBUS_AVAILABLE="1"
 
 ck_version="1"
-gentoo_version="5"
+gentoo_version="1"
 #tuxonice_version="2015.10.30"
 #uksm_version=""
 
-aufs_kernel_version="4.9_p20161219"
+aufs_kernel_version="4.9_p20170206"
 cjktty_kernel_version="4.4"
-reiser4_kernel_version="4.9.1"
+reiser4_kernel_version="4.10.0"
 #tuxonice_kernel_version="4.2.5"
 #uksm_kernel_version=""
 
