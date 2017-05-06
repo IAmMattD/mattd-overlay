@@ -66,7 +66,7 @@ DEPEND="${COMMON_DEPEND}
 	x11-proto/xproto
 "
 
-S="${WORKDIR}/fvwm-version-2_6_7"
+S="${WORKDIR}/${P}"
 
 src_prepare() {
 	if ! use vanilla; then
@@ -84,7 +84,7 @@ src_prepare() {
 }
 
 src_configure() {
-	local myconf="--libexecdir=/usr/lib --with-imagepath=/usr/include/X11/bitmaps:/usr/include/X11/pixmaps:/usr/share/icons/fvwm --enable-package-subdirs --without-gnome"
+	local myconf="--libexecdir=/usr/lib --with-imagepath=/usr/include/X11/bitmaps:/usr/include/X11/pixmaps:/usr/share/icons/fvwm --enable-package-subdirs"
 
 	# Non-upstream email where bugs should be sent; used in fvwm-bug.
 	export FVWM_BUGADDR="desktop-wm@gentoo.org"
@@ -94,8 +94,6 @@ src_configure() {
 
 	# Signed chars are required.
 	use ppc && append-flags -fsigned-char
-
-	myconf="${myconf} --disable-gtk"
 
 	use readline && myconf="${myconf} --without-termcap-library"
 
@@ -107,7 +105,7 @@ src_configure() {
 		$(use_enable nls) \
 		$(use_enable nls iconv) \
 		$(use_enable perl perllib) \
-		$(use_with png png-library) \
+		$(use_enable png) \
 		$(use_with readline readline-library) \
 		$(use_with rplay rplay-library) \
 		$(use_with stroke stroke-library) \
@@ -163,9 +161,7 @@ src_install() {
 	insinto /usr/share/xsessions
 	doins ${FILESDIR}/${PN}.desktop
 
-	dodoc AUTHORS ChangeLog NEWS README \
-		docs/{ANNOUNCE,BUGS,COMMANDS,CONVENTIONS} \
-		docs/{DEVELOPERS,error_codes,FAQ,TODO,fvwm.lsm}
+	dodoc docs/{COMMANDS,DEVELOPERS.md,PARSING.md}
 
 	# README file for translucent menus patch.
 	if ! use vanilla; then
