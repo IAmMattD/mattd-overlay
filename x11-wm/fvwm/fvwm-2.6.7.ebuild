@@ -7,7 +7,7 @@ inherit autotools eutils flag-o-matic
 
 DESCRIPTION="An extremely powerful ICCCM-compliant multiple virtual desktop window manager"
 HOMEPAGE="http://www.fvwm.org/"
-SRC_URI="https://github.com/fvwmorg/fvwm/archive/version-2_6_6.tar.gz -> ${P}.tar.gz"
+SRC_URI="https://github.com/fvwmorg/fvwm/releases/download/2.6.7/fvwm-2.6.7.tar.gz"
 
 LICENSE="GPL-2 FVWM"
 SLOT="0"
@@ -66,7 +66,7 @@ DEPEND="${COMMON_DEPEND}
 	x11-proto/xproto
 "
 
-S="${WORKDIR}/fvwm-version-2_6_6"
+S="${WORKDIR}/fvwm-version-2_6_7"
 
 src_prepare() {
 	if ! use vanilla; then
