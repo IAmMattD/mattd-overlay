@@ -1,6 +1,5 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
 EAPI=5
 
@@ -9,8 +8,8 @@ inherit eutils
 DESCRIPTION="Multiplatform Visual Studio Code from Microsoft"
 HOMEPAGE="https://code.visualstudio.com"
 SRC_URI="
-	amd64? ( https://vscode.cdn.azure.cn/stable/f6868fce3eeb16663840eb82123369dec6077a9b/code-stable-code_1.12.1-1493934083_amd64.tar.gz -> ${P}-amd64.tar.gz )
-	x86? ( https://vscode.cdn.azure.cn/stable/f6868fce3eeb16663840eb82123369dec6077a9b/code-stable-code_1.12.1-1493932947_i386.tar.gz -> ${P}-i386.tar.gz )"
+	amd64? ( https://vscode.cdn.azure.cn/stable/376c52b955428d205459bea6619fc161fc8faacf/code-stable-code_1.13.0-1496940180_amd64.tar.gz -> ${P}-amd64.tar.gz )
+	x86? ( https://vscode.cdn.azure.cn/stable/376c52b955428d205459bea6619fc161fc8faacf/code-stable-code_1.13.0-1496940179_i386.tar.gz -> ${P}-i386.tar.gz )"
 RESTRICT="mirror"
 
 LICENSE="Microsoft"

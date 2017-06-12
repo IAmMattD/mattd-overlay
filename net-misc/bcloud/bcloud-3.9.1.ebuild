@@ -1,10 +1,9 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v3
-# $Id$
 
 EAPI=5
 
-PYTHON_COMPAT=( python{3_3,3_4,3_5} )
+PYTHON_COMPAT=( python{3_4,3_5,3_6} )
 PYTHON_REQ_USE="sqlite"
 
 if [[ $PV = *9999* ]]; then
@@ -15,7 +14,7 @@ if [[ $PV = *9999* ]]; then
 	SRC_URI=""
 	KEYWORDS=""
 else
-	SRC_URI="https://github.com/LiuLang/bcloud/archive/v${PV}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/Yufeikang/bcloud/archive/v${PV}.zip -> ${P}.zip"
 	KEYWORDS="~amd64 ~x86"
 fi
 
@@ -23,7 +22,7 @@ inherit python-r1 ${scm_eclass}
 
 RESTRICT="mirror"
 DESCRIPTION="Baidu Pan client for Linux Desktop users"
-HOMEPAGE="https://github.com/LiuLang/bcloud"
+HOMEPAGE="https://github.com/Yufeikang/bcloud"
 
 LICENSE="GPL-3"
 SLOT="0"

@@ -1,18 +1,17 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI=5
-inherit autotools eutils flag-o-matic
+EAPI=6
+inherit autotools flag-o-matic
 
 DESCRIPTION="An extremely powerful ICCCM-compliant multiple virtual desktop window manager"
 HOMEPAGE="http://www.fvwm.org/"
-SRC_URI="https://github.com/fvwmorg/fvwm/releases/download/2.6.7/fvwm-2.6.7.tar.gz"
+SRC_URI="https://github.com/fvwmorg/fvwm/releases/download/${PV}/${P}.tar.gz"
 
 LICENSE="GPL-2 FVWM"
 SLOT="0"
-KEYWORDS="~alpha amd64 ~arm ~ia64 ppc ~ppc64 ~sparc x86 ~x86-fbsd"
-IUSE="bidi debug doc gtk2-perl netpbm nls perl png readline rplay stroke svg tk truetype +vanilla xinerama lock"
+KEYWORDS="~alpha ~amd64 ~arm ~ia64 ppc ~ppc64 ~sparc ~x86 ~x86-fbsd"
+IUSE="bidi debug doc gtk2-perl iconv netpbm nls perl png readline rplay stroke svg tk truetype +vanilla xinerama lock"
 
 COMMON_DEPEND="
 	sys-libs/zlib
@@ -29,6 +28,8 @@ COMMON_DEPEND="
 	x11-libs/libXrandr
 	x11-libs/libXrender
 	bidi? ( dev-libs/fribidi )
+	iconv? ( virtual/libiconv )
+	nls? ( virtual/libintl )
 	png? ( media-libs/libpng:0= )
 	readline? (
 		sys-libs/ncurses:0=
@@ -47,7 +48,7 @@ COMMON_DEPEND="
 "
 RDEPEND="${COMMON_DEPEND}
 	dev-lang/perl
-	gtk2-perl? ( dev-perl/gtk2-perl )
+	gtk2-perl? ( dev-perl/Gtk2 )
 	perl? ( tk? (
 			dev-lang/tk
 			dev-perl/Tk
@@ -66,25 +67,24 @@ DEPEND="${COMMON_DEPEND}
 	x11-proto/xproto
 "
 
-S="${WORKDIR}/${P}"
+DOCS=( NEWS )
 
 src_prepare() {
 	if ! use vanilla; then
 		# Enables fast translucent menus; patch from fvwm-user mailing list.
-		epatch "${FILESDIR}/${PN}-2.5.27-translucent-menus.diff"
+		eapply -p0 "${FILESDIR}/${PN}-2.5.27-translucent-menus.diff"
 
 		# Allow more mouse buttons, bug #411811
-		epatch "${FILESDIR}/${PN}-2.6.5-mouse-buttons.patch"
-
-		# Apply user-provided patches to the source tree, bug #411811
-		epatch_user
+		eapply -p0 "${FILESDIR}/${PN}-2.6.5-mouse-buttons.patch"
 	fi
 
+	eapply -p0 "${FILESDIR}/${PN}-2.6.5-ar.patch" #474528
+	eapply_user
 	eautoreconf
 }
 
 src_configure() {
-	local myconf="--libexecdir=/usr/lib --with-imagepath=/usr/include/X11/bitmaps:/usr/include/X11/pixmaps:/usr/share/icons/fvwm --enable-package-subdirs"
+	local myconf="--libexecdir=/usr/$(get_libdir) --with-imagepath=/usr/include/X11/bitmaps:/usr/include/X11/pixmaps:/usr/share/icons/fvwm --enable-package-subdirs"
 
 	# Non-upstream email where bugs should be sent; used in fvwm-bug.
 	export FVWM_BUGADDR="desktop-wm@gentoo.org"
@@ -102,8 +102,8 @@ src_configure() {
 		$(use_enable debug debug-msgs) \
 		$(use_enable debug command-log) \
 		$(use_enable doc htmldoc) \
+		$(use_enable iconv) \
 		$(use_enable nls) \
-		$(use_enable nls iconv) \
 		$(use_enable perl perllib) \
 		$(use_enable png) \
 		$(use_with readline readline-library) \
@@ -116,36 +116,39 @@ src_configure() {
 }
 
 src_install() {
-	emake DESTDIR="${D}" docdir="/usr/share/doc/${P}" install
+	emake DESTDIR="${ED}" docdir="/usr/share/doc/${P}" install
 
 	# These are always removed, because gentoo doesn't have anymore
 	# a dev-perl/gtk-perl package, so, these modules are pointless.
-	rm -f "${D}/usr/share/fvwm/perllib/FVWM/Module/Gtk.pm"
-	find "${D}" -name '*FvwmGtkDebug*' -exec rm -f '{}' \; 2>/dev/null
+	rm -f -- "${ED}/usr/share/fvwm/perllib/FVWM/Module/Gtk.pm" || die
+	find "${ED}" -name '*FvwmGtkDebug*' -exec rm -f '{}' \; 2>/dev/null || die
 
 	if ! use lock; then
-		find "${D}" -name '*fvwm-menu-xlock' -exec rm -f '{}' \; 2>/dev/null
+		find "${ED}" -name '*fvwm-menu-xlock' -exec rm -f '{}' \; 2>/dev/null || die
 	fi
 
 	if use perl; then
 		if ! use tk; then
-			rm -f "${D}/usr/share/fvwm/perllib/FVWM/Module/Tk.pm"
+			rm -f -- "${ED}/usr/share/fvwm/perllib/FVWM/Module/Tk.pm" || die
 			if ! use gtk2-perl; then # no tk and no gtk2 bindings
-				rm -f "${D}/usr/share/fvwm/perllib/FVWM/Module/Toolkit.pm"
-				find "${D}/usr/share/fvwm/perllib" -depth -type d -exec rmdir '{}' \; 2>/dev/null
+				rm -f -- "${ED}/usr/share/fvwm/perllib/FVWM/Module/Toolkit.pm" || die
+				find "${ED}/usr/share/fvwm/perllib" -depth -type d -exec rmdir '{}' \; \
+					2>/dev/null || die
 			fi
 		fi
 
-		# Now, the Gtk2.pm file, it will require dev-perl/gtk2-perl
+		# Now, the Gtk2.pm file, it will require dev-perl/Gtk2
 		# so it implies gtk2 as well. That's why we need another use flag.
 		if ! use gtk2-perl; then
-			rm -f "${D}/usr/share/fvwm/perllib/FVWM/Module/Gtk2.pm"
+			rm -f -- "${ED}/usr/share/fvwm/perllib/FVWM/Module/Gtk2.pm" || die
 		fi
 	else
 		# Completely wipe it if ! use perl
-		rm -rf "${D}/usr/bin/fvwm-perllib" \
-			"${D}/usr/share/man/man1/fvwm-perllib.1"
+		rm -rf -- "${ED}/usr/bin/fvwm-perllib" \
+			"${ED}/usr/share/man/man1/fvwm-perllib.1" || die
 	fi
+
+	einstalldocs
 
 	# Utility for testing FVWM behaviour by creating a simple window with
 	# configurable hints.
@@ -155,9 +158,9 @@ src_install() {
 	fi
 
 	dodir /etc/X11/Sessions
-	echo "/usr/bin/fvwm" > "${D}/etc/X11/Sessions/${PN}" || die
+	echo "/usr/bin/fvwm" > "${ED}/etc/X11/Sessions/${PN}" || die
 	fperms a+x /etc/X11/Sessions/${PN} || die
-	
+
 	insinto /usr/share/xsessions
 	doins ${FILESDIR}/${PN}.desktop
 
@@ -169,5 +172,10 @@ src_install() {
 		ewarn "You are using a patched build, so, please, don't"
 		ewarn "report bugs at the fvwm-workers list unless you are"
 		ewarn "also able to reproduce them with a vanilla build (USE=vanilla)."
+	fi
+
+	if ! use iconv; then
+		ewarn "If you have window title encoding issues, remerge"
+		ewarn "${CATEGORY}/${PN} with USE=iconv and restart FVWM."
 	fi
 }

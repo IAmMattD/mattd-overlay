@@ -1,19 +1,18 @@
-# Copyright 1999-2016 Gentoo Foundation
+# Copyright 1999-2017 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Id$
 
-EAPI="5"
+EAPI=5
 K_DEBLOB_AVAILABLE="0"
 K_KDBUS_AVAILABLE="1"
 
-ck_version="1"
-gentoo_version="1"
+ck_version="2"
+gentoo_version="5"
 #tuxonice_version="2015.10.30"
 #uksm_version=""
 
-aufs_kernel_version="4.9_p20170206"
+aufs_kernel_version="4.10_p20170410"
 cjktty_kernel_version="4.4"
-reiser4_kernel_version="4.10.0"
+reiser4_kernel_version="4.11.0"
 #tuxonice_kernel_version="4.2.5"
 #uksm_kernel_version=""
 
